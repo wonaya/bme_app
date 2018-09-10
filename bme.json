@@ -1,0 +1,106 @@
+{
+	"available": true,
+	"checkpointable": false,
+	"defaultMemoryPerNode": 32,
+	"defaultProcessorsPerNode": 16,
+	"defaultMaxRunTime": "12:00:00",
+	"defaultNodeCount": 3,
+	"defaultQueue": "normal",
+	"deploymentPath": "jawon/applications/bismark_methylation_extractor-0.18.1/stampede2",
+	"deploymentSystem": "data.iplantcollaborative.org",
+	"executionSystem": "tacc-stampede2-wonaya",
+	"executionType": "HPC",
+	"helpURI": "http://www.bioinformatics.babraham.ac.uk/projects/bismark/",
+	"label": "bismark_methylation_extractor",
+	"longDescription": "",
+	"modules": [],
+	"name": "jawon-bismark_methylation_extractor",
+	"ontology": [
+		"http://sswapmeet.sswap.info/agave/apps/Application"
+	],
+	"parallelism": "PARALLEL",
+	"shortDescription": "Methylation extractor using Bismark aligned BAM",
+	"tags": [
+		"Bisulfite",
+		"methylation"
+	],
+	"ontology": [ 
+	    "http://edamontology.org/operation_3204",
+	    "http://edamontology.org/topic_3295",
+	    "http://sswapmeet.sswap.info/iplant/apps/Application"
+	],
+	"templatePath": "test.template",
+	"testPath": "test_bme.sh",
+	"version": "0.18.1",
+	"inputs": [{
+			"id": "bam",
+			"value": {
+				"default": "bam.bam",
+				"order": 0,
+				"required": true,
+				"visible": true
+			},
+			"semantics": {
+				"ontology": [
+					"http://sswapmeet.sswap.info/mime/application/X-bam"
+				],
+				"minCardinality": 1,
+				"fileTypes": [
+					"raw-0"
+				]
+			},
+			"details": {
+				"description": "",
+				"label": "Bismark aligned BAM",
+				"argument": null,
+				"showArgument": false
+			}
+		}, {
+			"id": "fasta",
+			"value": {
+				"default": "genome.fasta",
+				"order": 0,
+				"required": true,
+				"visible": true
+			},
+			"semantics": {
+				"ontology": [
+					"http://sswapmeet.sswap.info/mime/application/X-fasta"
+				],
+				"minCardinality": 1,
+				"fileTypes": [
+					"raw-0"
+				]
+			},
+			"details": {
+				"description": "",
+				"label": "Genome in Fasta format",
+				"argument": null,
+				"showArgument": false
+			}
+		}
+
+	],
+	"parameters": [{
+		"id": "paired",
+		"value": {
+			"default": false,
+			"order": 1,
+			"required": true,
+			"type": "bool",
+			"validator": "",
+			"visible": true
+		},
+		"semantics": {
+			"ontology": [
+				"xs:boolean"
+			]
+		},
+		"details": {
+			"description": null,
+			"label": "The aligned file is mapped with paired-end reads",
+			"argument": null,
+			"showArgument": false
+		}
+	}]
+}

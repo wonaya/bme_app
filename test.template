@@ -1,0 +1,17 @@
+module load bowtie/2.3.2 bismark
+module load samtools
+
+#input
+BAM=${bam}
+FASTA=${fasta}
+
+BAM_F=$(basename ${BAM})
+FASTA_F=$(basename ${FASTA})
+
+ARGS=""
+# Build up an ARGS string for the program
+ARGS="-multicore 10 "
+if [ ${PAIRED} -eq 1 ]; then ARGS="${ARGS} -p "; elif [ ${PAIRED} -eq 0 ]; then ARGS="${ARGS} -s " ; fi
+
+# Run the actual program
+bismark_methylation_extractor ${ARGS} --multicore 4 --genome_folder $PWD/${FASTA_F} ${BAM_F}
